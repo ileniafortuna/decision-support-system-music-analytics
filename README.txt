@@ -1,5 +1,4 @@
 PROJECT: Decision Support System
-GROUP: 13
 SCOPE: Final Deadline (Assignments 1-22)
 
 ================================================================================
