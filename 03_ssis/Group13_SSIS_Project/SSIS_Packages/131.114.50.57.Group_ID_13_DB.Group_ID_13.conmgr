@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="131.114.50.57.Group_ID_13_DB.Group_ID_13"
+  DTS:DTSID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="Password">"9F7LUZXT"</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=131.114.50.57;User ID=Group_ID_13;Initial Catalog=Group_ID_13_DB;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{2CA94DEF-4A7E-42AF-B243-01E391F60C98}131.114.50.57.Group_ID_13_DB.Group_ID_13;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1"></DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

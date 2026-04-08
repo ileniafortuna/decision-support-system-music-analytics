@@ -1,0 +1,1983 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/2/2025 3:52:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PROMETHEUS"
+  DTS:CreatorName="Prometheus\Fabrizio"
+  DTS:DTSID="{E757E6F5-0C2F-4D6A-BA34-28A854134AB6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Assignment8"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{8DD98FE8-CE28-4A29-B7D4-F081D5A3D517}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Report_Assignment8]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{BB1BF7C0-E99B-43DA-8C35-B1FB6B8FC40C}"
+      DTS:ObjectName="Report_Assignment8">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Dss\00_data\output\Assignment8_Output.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Year"
+              DTS:DTSID="{6A9721F7-961B-48F6-8126-F645AAC80928}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Artist"
+              DTS:DTSID="{163CE23C-16AF-436A-9E45-945FEDE522CC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalSongs"
+              DTS:DTSID="{365EB667-BB52-484A-B778-A34C2067A714}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Artist Production Yearly"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{810F610E-CA4B-4CB7-8E99-BFF0B7633D7E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Artist Production Yearly"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Artist Production Yearly\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Aggregate.Inputs[Aggregate Input 1].Columns[year]"
+                      cachedDataType="i2"
+                      cachedName="year"
+                      lineageId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Aggregate.Inputs[Aggregate Input 1].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Name"
+                      lineageId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Match Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[year]"
+                      dataType="i2"
+                      lineageId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[year]"
+                      name="year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[year]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[Name]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[Name]"
+                      name="Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Match Output].Columns[Name]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[TotalSongs]"
+                      dataType="ui8"
+                      lineageId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[TotalSongs]"
+                      name="TotalSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Artist Production Yearly\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\Conditional Split_MainArtist"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split_MainArtist"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\Conditional Split_MainArtist.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Conditional Split_MainArtist.Inputs[Conditional Split Input].Columns[role]"
+                      cachedDataType="bool"
+                      cachedName="role"
+                      lineageId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[role]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\Conditional Split_MainArtist.Outputs[MainArtist]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="MainArtist"
+                  synchronousInputId="Package\Artist Production Yearly\Conditional Split_MainArtist.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[role]} ==  TRUE </property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">role ==  TRUE </property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Artist Production Yearly\Conditional Split_MainArtist.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Artist Production Yearly\Conditional Split_MainArtist.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Artist Production Yearly\Conditional Split_MainArtist.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Artist Production Yearly\Conditional Split_MainArtist.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Conditional Split_MainArtist.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Conditional Split_MainArtist.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Conditional Split_MainArtist.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Conditional Split_MainArtist.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="2057"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Artist Production Yearly\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Report_Assignment8]"
+                  connectionManagerRefId="Package.ConnectionManagers[Report_Assignment8]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].Columns[year]"
+                      cachedDataType="i2"
+                      cachedName="year"
+                      cachedSortKeyPosition="-1"
+                      externalMetadataColumnId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].Columns[TotalSongs]"
+                      cachedDataType="ui8"
+                      cachedName="TotalSongs"
+                      cachedSortKeyPosition="-2"
+                      externalMetadataColumnId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[TotalSongs]"
+                      lineageId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[TotalSongs]" />
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Artist]"
+                      lineageId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Artist]"
+                      dataType="wstr"
+                      length="255"
+                      name="Artist" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[TotalSongs]"
+                      dataType="ui4"
+                      name="TotalSongs" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\LookupArtist"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupArtist"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Group_ID_13].[DimArtist]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Group_ID_13].[DimArtist]) [refTable]
+where [refTable].[artist_pk] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="artist_pk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_artist" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="geo_fk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="name" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="gender" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="birth_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nationality" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="description" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[artist_fk]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Artist Production Yearly\LookupArtist.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\LookupArtist.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\LookupArtist.Inputs[Lookup Input].Columns[artist_fk]"
+                      cachedDataType="i4"
+                      cachedName="artist_fk"
+                      lineageId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[artist_fk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">artist_pk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Artist Production Yearly\LookupArtist.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Match Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="200"
+                      lineageId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Match Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">name</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Artist Production Yearly\LookupArtist.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Artist Production Yearly\LookupArtist.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\LookupDate"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDate"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Group_ID_13].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Group_ID_13].[DimDate]) [refTable]
+where [refTable].[date_song_pk] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_song_pk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="full_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="day" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="weekday" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="season" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Artist Production Yearly\LookupDate.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\LookupDate.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\LookupDate.Inputs[Lookup Input].Columns[date_song_fk]"
+                      cachedDataType="i4"
+                      cachedName="date_song_fk"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">date_song_pk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Artist Production Yearly\LookupDate.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Match Output].Columns[year]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Match Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">year</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Artist Production Yearly\LookupDate.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Artist Production Yearly\LookupDate.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Left Input].Columns[track_fk]"
+                      cachedDataType="i4"
+                      cachedName="track_fk"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output].Columns[track_fk]" />
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Left Input].Columns[year]"
+                      cachedDataType="i2"
+                      cachedName="year"
+                      lineageId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output].Columns[year]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Right Input].Columns[track_fk]"
+                      cachedDataType="i4"
+                      cachedName="track_fk"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[track_fk]" />
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Right Input].Columns[artist_fk]"
+                      cachedDataType="i4"
+                      cachedName="artist_fk"
+                      lineageId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[artist_fk]" />
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Right Input].Columns[role]"
+                      cachedDataType="bool"
+                      cachedName="role"
+                      lineageId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[role]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output]"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[artist_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[artist_fk]"
+                      name="artist_fk">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Right Input].Columns[artist_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[role]"
+                      dataType="bool"
+                      lineageId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[role]"
+                      name="role">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Right Input].Columns[role]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[year]"
+                      dataType="i2"
+                      lineageId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output].Columns[year]"
+                      name="year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Left Input].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort.Inputs[Sort Input].Columns[year]"
+                      cachedDataType="i2"
+                      cachedName="year"
+                      lineageId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort.Inputs[Sort Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Name"
+                      lineageId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort.Inputs[Sort Input].Columns[TotalSongs]"
+                      cachedDataType="ui8"
+                      cachedName="TotalSongs"
+                      lineageId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[TotalSongs]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[year]"
+                      dataType="i2"
+                      lineageId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[year]"
+                      name="year"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[Name]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[Name]"
+                      name="Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[TotalSongs]"
+                      dataType="ui8"
+                      lineageId="Package\Artist Production Yearly\Sort.Outputs[Sort Output].Columns[TotalSongs]"
+                      name="TotalSongs"
+                      sortKeyPosition="-2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1].Columns[TotalSongs]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\Sort Track"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Track"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\Sort Track.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort Track.Inputs[Sort Input].Columns[date_song_fk]"
+                      cachedDataType="i4"
+                      cachedName="date_song_fk"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort Track.Inputs[Sort Input].Columns[track_fk]"
+                      cachedDataType="i4"
+                      cachedName="track_fk"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[track_fk]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort Track.Inputs[Sort Input].Columns[year]"
+                      cachedDataType="i2"
+                      cachedName="year"
+                      lineageId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Match Output].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output].Columns[date_song_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output].Columns[date_song_fk]"
+                      name="date_song_fk">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output].Columns[track_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output].Columns[track_fk]"
+                      name="track_fk"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[track_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output].Columns[year]"
+                      dataType="i2"
+                      lineageId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output].Columns[year]"
+                      name="year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\LookupDate.Outputs[Lookup Match Output].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\Sort Track_2"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Track_2"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Artist Production Yearly\Sort Track_2.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort Track_2.Inputs[Sort Input].Columns[track_fk]"
+                      cachedDataType="i4"
+                      cachedName="track_fk"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[track_fk]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort Track_2.Inputs[Sort Input].Columns[artist_fk]"
+                      cachedDataType="i4"
+                      cachedName="artist_fk"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[artist_fk]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Artist Production Yearly\Sort Track_2.Inputs[Sort Input].Columns[role]"
+                      cachedDataType="bool"
+                      cachedName="role"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[role]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[track_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[track_fk]"
+                      name="track_fk"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[track_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[artist_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[artist_fk]"
+                      name="artist_fk">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[artist_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[role]"
+                      dataType="bool"
+                      lineageId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output].Columns[role]"
+                      name="role">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[role]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\Source Bridge"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source Bridge"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Group_ID_13].[BridgeFeatured]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Artist Production Yearly\Source Bridge.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[track_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[track_fk]"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[track_fk]"
+                      name="track_fk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[artist_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[artist_fk]"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[artist_fk]"
+                      name="artist_fk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[role]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[role]"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].Columns[role]"
+                      name="role"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[track_fk]"
+                      dataType="i4"
+                      name="track_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[artist_fk]"
+                      dataType="i4"
+                      name="artist_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[role]"
+                      dataType="bool"
+                      name="role" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[track_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[track_fk]"
+                      name="track_fk" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[artist_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[artist_fk]"
+                      name="artist_fk" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[role]"
+                      dataType="bool"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[role]"
+                      name="role" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Artist Production Yearly\Source Fact"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source Fact"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Group_ID_13].[FactSongStreams]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Artist Production Yearly\Source Fact.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[date_song_fk]"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]"
+                      name="date_song_fk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[track_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[track_fk]"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].Columns[track_fk]"
+                      name="track_fk"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[fact_pk]"
+                      dataType="i4"
+                      name="fact_pk" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[date_song_fk]"
+                      dataType="i4"
+                      name="date_song_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[track_fk]"
+                      dataType="i4"
+                      name="track_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[category_fk]"
+                      dataType="i4"
+                      name="category_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[streams_1month]"
+                      dataType="i4"
+                      name="streams_1month" />
+                    <externalMetadataColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[popularity]"
+                      dataType="i4"
+                      name="popularity" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output].Columns[date_song_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output].Columns[date_song_fk]"
+                      name="date_song_fk" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output].Columns[track_fk]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output].Columns[track_fk]"
+                      name="track_fk" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Artist Production Yearly.Paths[Aggregate Output 1]"
+              endId="Package\Artist Production Yearly\Sort.Inputs[Sort Input]"
+              name="Aggregate Output 1"
+              startId="Package\Artist Production Yearly\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[Lookup Match Output]"
+              endId="Package\Artist Production Yearly\Sort Track.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\Artist Production Yearly\LookupDate.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[Lookup Match Output1]"
+              endId="Package\Artist Production Yearly\Aggregate.Inputs[Aggregate Input 1]"
+              name="Lookup Match Output"
+              startId="Package\Artist Production Yearly\LookupArtist.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[MainArtist]"
+              endId="Package\Artist Production Yearly\LookupArtist.Inputs[Lookup Input]"
+              name="MainArtist"
+              startId="Package\Artist Production Yearly\Conditional Split_MainArtist.Outputs[MainArtist]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[Merge Join Output]"
+              endId="Package\Artist Production Yearly\Conditional Split_MainArtist.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Artist Production Yearly\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[OLE DB Source Output]"
+              endId="Package\Artist Production Yearly\LookupDate.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Artist Production Yearly\Source Fact.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[OLE DB Source Output1]"
+              endId="Package\Artist Production Yearly\Sort Track_2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Artist Production Yearly\Source Bridge.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[Sort Output]"
+              endId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Artist Production Yearly\Sort Track.Outputs[Sort Output]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[Sort Output1]"
+              endId="Package\Artist Production Yearly\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Artist Production Yearly\Sort Track_2.Outputs[Sort Output]" />
+            <path
+              refId="Package\Artist Production Yearly.Paths[Sort Output2]"
+              endId="Package\Artist Production Yearly\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Sort Output"
+              startId="Package\Artist Production Yearly\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Artist Production Yearly"
+          TopLeft="262.642857690247,163.029411626625" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Artist Production Yearly">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\Artist Production Yearly\Source Fact"
+          TopLeft="6.21428571580623,8.55882352673058" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Artist Production Yearly\Conditional Split_MainArtist"
+          TopLeft="4.0714285683875,185.928414408977" />
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Artist Production Yearly\LookupDate"
+          TopLeft="191.214286109623,13.4977815065723" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Artist Production Yearly\Sort Track_2"
+          TopLeft="438.357143650858,13.0860168536433" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Artist Production Yearly\Source Bridge"
+          TopLeft="625.500001255955,9.05294120596344" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Artist Production Yearly\Flat File Destination"
+          TopLeft="564.785715412424,314.935293879021" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Artist Production Yearly\Sort Track"
+          TopLeft="199.785714635436,80.9683697090221" />
+        <NodeLayout
+          Size="136.8,41.6"
+          Id="Package\Artist Production Yearly\LookupArtist"
+          TopLeft="54.0714286109623,263.340179073302" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Artist Production Yearly\Sort"
+          TopLeft="421.214286599232,260.594117462728" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Artist Production Yearly\Aggregate"
+          TopLeft="221.928571889291,262.347058019176" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Artist Production Yearly\Merge Join"
+          TopLeft="336.92857194251,139.438957945657" />
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[OLE DB Source Output1]"
+          TopLeft="625.500001255955,31.8694790298034">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-48.7428576050971,0"
+              Start="0,0"
+              End="-41.2428576050971,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-41.2428576050971,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[OLE DB Source Output]"
+          TopLeft="139.814285715806,31.8283025166515">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51.4000003938166,0"
+              Start="0,0"
+              End="43.9000003938166,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="43.9000003938166,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[Merge Join Output]"
+          TopLeft="336.92857194251,160.238957945657">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125.657143374122,46.4894564633207"
+              Start="0,0"
+              End="-118.157143374122,46.4894564633207">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-58.828571687061,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-58.828571687061,0"
+                    Point2="-62.828571687061,0"
+                    Point3="-62.828571687061,4" />
+                  <mssgle:LineSegment
+                    End="-62.828571687061,42.4894564633207" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62.828571687061,42.4894564633207"
+                    Point2="-62.828571687061,46.4894564633207"
+                    Point3="-66.828571687061,46.4894564633207" />
+                  <mssgle:LineSegment
+                    End="-118.157143374122,46.4894564633207" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[MainArtist]"
+          TopLeft="107.671428568387,227.528414408977">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.8000000425748,35.811764664325"
+              Start="0,0"
+              End="14.8000000425748,28.311764664325">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.9058823321625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.9058823321625"
+                    Point2="0,17.9058823321625"
+                    Point3="4,17.9058823321625" />
+                  <mssgle:LineSegment
+                    End="10.8000000425748,17.9058823321625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.8000000425748,17.9058823321625"
+                    Point2="14.8000000425748,17.9058823321625"
+                    Point3="14.8000000425748,21.9058823321625" />
+                  <mssgle:LineSegment
+                    End="14.8000000425748,28.311764664325" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.1563866974626,22.9058823321625,45.1127734375,9.470703125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[Lookup Match Output1]"
+          TopLeft="190.871428610962,283.643618546239">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.0571432783287,0"
+              Start="0,0"
+              End="23.5571432783287,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.5571432783287,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-36.4128150795857,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[Lookup Match Output]"
+          TopLeft="260.700000372529,55.0977815065723">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.8705882024498"
+              Start="0,0"
+              End="0,18.3705882024498">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.3705882024498" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,3.38060660122488,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[Aggregate Output 1]"
+          TopLeft="348.328571889291,282.270587740952">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.8857147099412,0"
+              Start="0,0"
+              End="65.3857147099412,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="65.3857147099412,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[Sort Output2]"
+          TopLeft="518.814286599232,281.394117462728">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.971428813192,54.3411764162936"
+              Start="0,0"
+              End="38.471428813192,54.3411764162936">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.985714406596,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.985714406596,0"
+                    Point2="22.985714406596,0"
+                    Point3="22.985714406596,4" />
+                  <mssgle:LineSegment
+                    End="22.985714406596,50.3411764162936" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.985714406596,50.3411764162936"
+                    Point2="22.985714406596,54.3411764162936"
+                    Point3="26.985714406596,54.3411764162936" />
+                  <mssgle:LineSegment
+                    End="38.471428813192,54.3411764162936" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[Sort Output1]"
+          TopLeft="507.557143650858,54.6860168536433">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-85.5619050416817,84.7529410920135"
+              Start="0,0"
+              End="-85.5619050416817,77.2529410920135">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.2316211838031" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.2316211838031"
+                    Point2="0,50.2316211838031"
+                    Point3="-4,50.2316211838031" />
+                  <mssgle:LineSegment
+                    End="-81.5619050416817,50.2316211838031" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-81.5619050416817,50.2316211838031"
+                    Point2="-85.5619050416817,50.2316211838031"
+                    Point3="-85.5619050416817,54.2316211838031" />
+                  <mssgle:LineSegment
+                    End="-85.5619050416817,77.2529410920135" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Artist Production Yearly.Paths[Sort Output]"
+          TopLeft="326.185714635435,101.768369709022">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55.2761906404074,37.6705882366347"
+              Start="0,0"
+              End="55.2761906404074,30.1705882366347">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="51.2761906404074,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.2761906404074,0"
+                    Point2="55.2761906404074,0"
+                    Point3="55.2761906404074,4" />
+                  <mssgle:LineSegment
+                    End="55.2761906404074,30.1705882366347" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Artist Production Yearly\Source Fact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Artist Production Yearly\LookupDate">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Group_ID_13].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Artist Production Yearly\Source Bridge">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Artist Production Yearly\LookupArtist">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Group_ID_13].[DimArtist]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

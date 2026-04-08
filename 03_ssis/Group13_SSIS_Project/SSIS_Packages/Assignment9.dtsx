@@ -1,0 +1,3282 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/2/2025 3:53:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PROMETHEUS"
+  DTS:CreatorName="Prometheus\Fabrizio"
+  DTS:DTSID="{F7AC61DD-4279-40CB-8ABF-87B13E62AEA6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{2FDB1B1D-2D55-45AA-8408-88A2DE75D0FC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Report_Assignment9]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E81AE85C-6701-4568-98B8-001D4B311606}"
+      DTS:ObjectName="Report_Assignment9">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Dss\00_data\output\Assignment9_Output.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Country"
+              DTS:DTSID="{31D166E9-D960-45C5-9F0A-632A5AAE8475}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Region"
+              DTS:DTSID="{C70C7810-455D-4BF7-A89C-FF8E782CBF74}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="21"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SongScore"
+              DTS:DTSID="{F87F4BFA-7714-4247-9354-82CD54528975}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="21"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StreamScore"
+              DTS:DTSID="{D36F6BDD-9AEE-46CB-8F11-B51BDE34DB14}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Calculate Seasonal Score"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7CC7A4A1-AA9A-4074-898C-858222FD5983}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Calculate Seasonal Score"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Calculate Seasonal Score\AggSummer"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="AggSummer"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\AggSummer.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\AggSummer.Inputs[Aggregate Input 1].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="region"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\AggSummer.Inputs[Aggregate Input 1].Columns[streams_1month]"
+                      cachedDataType="i4"
+                      cachedName="streams_1month"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[streams_1month]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\AggSummer.Inputs[Aggregate Input 1].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="country"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[Region]"
+                      name="Region">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[region]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[SummerSongs]"
+                      dataType="ui8"
+                      lineageId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[SummerSongs]"
+                      name="SummerSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[streams_1month]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[SummerStreams]"
+                      dataType="i8"
+                      lineageId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[SummerStreams]"
+                      name="SummerStreams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[streams_1month]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[country]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[country]"
+                      name="country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[country]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\AggWinter"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="AggWinter"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\AggWinter.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\AggWinter.Inputs[Aggregate Input 1].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="region"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\AggWinter.Inputs[Aggregate Input 1].Columns[streams_1month]"
+                      cachedDataType="i4"
+                      cachedName="streams_1month"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[streams_1month]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\AggWinter.Inputs[Aggregate Input 1].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="country"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[region]"
+                      name="region">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[region]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[WinterStreams]"
+                      dataType="i8"
+                      lineageId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[WinterStreams]"
+                      name="WinterStreams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[streams_1month]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[WinterSongs]"
+                      dataType="ui8"
+                      lineageId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[WinterSongs]"
+                      name="WinterSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[streams_1month]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[country]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[country]"
+                      name="country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[country]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Conditional Split.Inputs[Conditional Split Input].Columns[Season]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Season"
+                      lineageId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Match Output].Columns[Season]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Conditional Split.Outputs[SummerRows]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="SummerRows"
+                  synchronousInputId="Package\Calculate Seasonal Score\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Match Output].Columns[Season]} == "summer"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Season == "summer"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Conditional Split.Outputs[WinterRows]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="WinterRows"
+                  synchronousInputId="Package\Calculate Seasonal Score\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Match Output].Columns[Season]} == "winter"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Season == "winter"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Conditional Split_"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split_"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Conditional Split_.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Conditional Split_.Inputs[Conditional Split Input].Columns[role]"
+                      cachedDataType="bool"
+                      cachedName="role"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[role]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Conditional Split_.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Calculate Seasonal Score\Conditional Split_.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[role]} ==  TRUE </property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">role ==  TRUE </property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Conditional Split_.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Conditional Split_.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Conditional Split_.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Conditional Split_.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Conditional Split_.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Conditional Split_.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Conditional Split_.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Conditional Split_.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Derived Column.Inputs[Derived Column Input].Columns[WinterSongs]"
+                      cachedDataType="ui8"
+                      cachedName="WinterSongs"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Derived Column.Inputs[Derived Column Input].Columns[WinterStreams]"
+                      cachedDataType="i8"
+                      cachedName="WinterStreams"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Derived Column.Inputs[Derived Column Input].Columns[SummerSongs]"
+                      cachedDataType="ui8"
+                      cachedName="SummerSongs"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerSongs]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Derived Column.Inputs[Derived Column Input].Columns[SummerStreams]"
+                      cachedDataType="i8"
+                      cachedName="SummerStreams"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerStreams]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Output].Columns[SongScore]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="21"
+                      lineageId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Output].Columns[SongScore]"
+                      name="SongScore"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT]((DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerSongs]} / ((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]} == 0 ? 1.0 : (DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]})),1) == "." ? "0" + (DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerSongs]} / ((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]} == 0 ? 1.0 : (DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]})) : (DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerSongs]} / ((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]} == 0 ? 1.0 : (DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT((DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)SummerSongs / ((DT_R8)WinterSongs == 0 ? 1.0 : (DT_R8)WinterSongs)),1) == "." ? "0" + (DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)SummerSongs / ((DT_R8)WinterSongs == 0 ? 1.0 : (DT_R8)WinterSongs)) : (DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)SummerSongs / ((DT_R8)WinterSongs == 0 ? 1.0 : (DT_R8)WinterSongs))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Output].Columns[StreamScore]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="21"
+                      lineageId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Output].Columns[StreamScore]"
+                      name="StreamScore"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT]((DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerStreams]} / (#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]} == 0 ? 1.0 : (DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]})),1) == "." ? "0" + (DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerStreams]} / (#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]} == 0 ? 1.0 : (DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]})) : (DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerStreams]} / (#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]} == 0 ? 1.0 : (DT_R8)#{Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT((DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)SummerStreams / (WinterStreams == 0 ? 1.0 : (DT_R8)WinterStreams)),1) == "." ? "0" + (DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)SummerStreams / (WinterStreams == 0 ? 1.0 : (DT_R8)WinterStreams)) : (DT_WSTR,20)(DT_NUMERIC,10,2)((DT_R8)SummerStreams / (WinterStreams == 0 ? 1.0 : (DT_R8)WinterStreams))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="2057"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Calculate Seasonal Score\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Report_Assignment9]"
+                  connectionManagerRefId="Package.ConnectionManagers[Report_Assignment9]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="country"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Region"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].Columns[SongScore]"
+                      cachedDataType="wstr"
+                      cachedLength="21"
+                      cachedName="SongScore"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SongScore]"
+                      lineageId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Output].Columns[SongScore]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].Columns[StreamScore]"
+                      cachedDataType="wstr"
+                      cachedLength="21"
+                      cachedName="StreamScore"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[StreamScore]"
+                      lineageId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Output].Columns[StreamScore]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SongScore]"
+                      dataType="wstr"
+                      length="21"
+                      name="SongScore" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[StreamScore]"
+                      dataType="wstr"
+                      length="21"
+                      name="StreamScore" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Country" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Lookup Artist"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Artist"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Group_ID_13].[DimArtist]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Group_ID_13].[DimArtist]) [refTable]
+where [refTable].[artist_pk] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="artist_pk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_artist" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="geo_fk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="name" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="gender" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="birth_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nationality" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="description" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[artist_fk]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Calculate Seasonal Score\Lookup Artist.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Lookup Artist.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Artist.Inputs[Lookup Input].Columns[artist_fk]"
+                      cachedDataType="i4"
+                      cachedName="artist_fk"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[artist_fk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">artist_pk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup Artist.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Match Output].Columns[geo_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Match Output].Columns[geo_fk]"
+                      name="geo_fk"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">geo_fk</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup Artist.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup Artist.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Lookup Geo"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Geo"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Group_ID_13].[DimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Group_ID_13].[DimGeography]) [refTable]
+where [refTable].[geo_pk] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="geo_pk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="birth_place" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="province" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="region" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="country" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Match Output].Columns[geo_fk]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Calculate Seasonal Score\Lookup Geo.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Lookup Geo.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Geo.Inputs[Lookup Input].Columns[geo_fk]"
+                      cachedDataType="i4"
+                      cachedName="geo_fk"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Match Output].Columns[geo_fk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">geo_pk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup Geo.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">region</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">country</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup Geo.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup Geo.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Lookup_Date"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Date"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Group_ID_13].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Group_ID_13].[DimDate]) [refTable]
+where [refTable].[date_song_pk] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_song_pk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="full_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="day" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="weekday" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="season" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[date_song_fk]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Calculate Seasonal Score\Lookup_Date.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Lookup_Date.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup_Date.Inputs[Lookup Input].Columns[date_song_fk]"
+                      cachedDataType="i4"
+                      cachedName="date_song_fk"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[date_song_fk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">date_song_pk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup_Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Match Output].Columns[Season]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="20"
+                      lineageId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Match Output].Columns[Season]"
+                      name="Season"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">season</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup_Date.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Calculate Seasonal Score\Lookup_Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">2</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Region"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input].Columns[WinterSongs]"
+                      cachedDataType="ui8"
+                      cachedName="WinterSongs"
+                      lineageId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[WinterSongs]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input].Columns[WinterStreams]"
+                      cachedDataType="i8"
+                      cachedName="WinterStreams"
+                      lineageId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[WinterStreams]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="country"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Right Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Region"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Right Input].Columns[SummerSongs]"
+                      cachedDataType="ui8"
+                      cachedName="SummerSongs"
+                      lineageId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[SummerSongs]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Right Input].Columns[SummerStreams]"
+                      cachedDataType="i8"
+                      cachedName="SummerStreams"
+                      lineageId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[SummerStreams]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Right Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="country"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[Region]"
+                      name="Region"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input].Columns[Region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]"
+                      dataType="ui8"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterSongs]"
+                      name="WinterSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input].Columns[WinterSongs]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]"
+                      dataType="i8"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[WinterStreams]"
+                      name="WinterStreams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input].Columns[WinterStreams]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerSongs]"
+                      dataType="ui8"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerSongs]"
+                      name="SummerSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Right Input].Columns[SummerSongs]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerStreams]"
+                      dataType="i8"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[SummerStreams]"
+                      name="SummerStreams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Right Input].Columns[SummerStreams]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[country]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output].Columns[country]"
+                      name="country"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input].Columns[country]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Merge Join 1"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Left Input].Columns[track_fk]"
+                      cachedDataType="i4"
+                      cachedName="track_fk"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[track_fk]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Left Input].Columns[date_song_fk]"
+                      cachedDataType="i4"
+                      cachedName="date_song_fk"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[date_song_fk]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Left Input].Columns[streams_1month]"
+                      cachedDataType="i4"
+                      cachedName="streams_1month"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[streams_1month]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Right Input].Columns[track_fk]"
+                      cachedDataType="i4"
+                      cachedName="track_fk"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[track_fk]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Right Input].Columns[artist_fk]"
+                      cachedDataType="i4"
+                      cachedName="artist_fk"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[artist_fk]" />
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Right Input].Columns[role]"
+                      cachedDataType="bool"
+                      cachedName="role"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[role]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output]"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[date_song_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[date_song_fk]"
+                      name="date_song_fk">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Left Input].Columns[date_song_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[streams_1month]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[streams_1month]"
+                      name="streams_1month">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Left Input].Columns[streams_1month]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[artist_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[artist_fk]"
+                      name="artist_fk">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Right Input].Columns[artist_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[role]"
+                      dataType="bool"
+                      lineageId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output].Columns[role]"
+                      name="role">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Right Input].Columns[role]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort.Inputs[Sort Input].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="region"
+                      lineageId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[region]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort.Inputs[Sort Input].Columns[WinterSongs]"
+                      cachedDataType="ui8"
+                      cachedName="WinterSongs"
+                      lineageId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[WinterSongs]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort.Inputs[Sort Input].Columns[WinterStreams]"
+                      cachedDataType="i8"
+                      cachedName="WinterStreams"
+                      lineageId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[WinterStreams]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort.Inputs[Sort Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="country"
+                      lineageId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[Region]"
+                      name="Region"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[WinterSongs]"
+                      dataType="ui8"
+                      lineageId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[WinterSongs]"
+                      name="WinterSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[WinterSongs]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[WinterStreams]"
+                      dataType="i8"
+                      lineageId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[WinterStreams]"
+                      name="WinterStreams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[WinterStreams]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[country]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output].Columns[country]"
+                      name="country"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1].Columns[country]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort 1.Inputs[Sort Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Region"
+                      lineageId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[Region]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort 1.Inputs[Sort Input].Columns[SummerSongs]"
+                      cachedDataType="ui8"
+                      cachedName="SummerSongs"
+                      lineageId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[SummerSongs]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort 1.Inputs[Sort Input].Columns[SummerStreams]"
+                      cachedDataType="i8"
+                      cachedName="SummerStreams"
+                      lineageId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[SummerStreams]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort 1.Inputs[Sort Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="country"
+                      lineageId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[Region]"
+                      name="Region"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[Region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[SummerSongs]"
+                      dataType="ui8"
+                      lineageId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[SummerSongs]"
+                      name="SummerSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[SummerSongs]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[SummerStreams]"
+                      dataType="i8"
+                      lineageId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[SummerStreams]"
+                      name="SummerStreams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[SummerStreams]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[country]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output].Columns[country]"
+                      name="country"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1].Columns[country]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Sort Track"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Track"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Sort Track.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track.Inputs[Sort Input].Columns[date_song_fk]"
+                      cachedDataType="i4"
+                      cachedName="date_song_fk"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track.Inputs[Sort Input].Columns[track_fk]"
+                      cachedDataType="i4"
+                      cachedName="track_fk"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[track_fk]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track.Inputs[Sort Input].Columns[streams_1month]"
+                      cachedDataType="i4"
+                      cachedName="streams_1month"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[streams_1month]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[date_song_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[date_song_fk]"
+                      name="date_song_fk">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[track_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[track_fk]"
+                      name="track_fk"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[track_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[streams_1month]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output].Columns[streams_1month]"
+                      name="streams_1month">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[streams_1month]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Sort Track2"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Track2"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate Seasonal Score\Sort Track2.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track2.Inputs[Sort Input].Columns[track_fk]"
+                      cachedDataType="i4"
+                      cachedName="track_fk"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[track_fk]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track2.Inputs[Sort Input].Columns[artist_fk]"
+                      cachedDataType="i4"
+                      cachedName="artist_fk"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[artist_fk]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track2.Inputs[Sort Input].Columns[role]"
+                      cachedDataType="bool"
+                      cachedName="role"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[role]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[track_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[track_fk]"
+                      name="track_fk"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[track_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[artist_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[artist_fk]"
+                      name="artist_fk">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[artist_fk]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[role]"
+                      dataType="bool"
+                      lineageId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output].Columns[role]"
+                      name="role">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[role]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Source Bridge"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source Bridge"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Group_ID_13].[BridgeFeatured]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Calculate Seasonal Score\Source Bridge.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[track_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[track_fk]"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[track_fk]"
+                      name="track_fk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[artist_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[artist_fk]"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[artist_fk]"
+                      name="artist_fk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[role]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[role]"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].Columns[role]"
+                      name="role"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[track_fk]"
+                      dataType="i4"
+                      name="track_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[artist_fk]"
+                      dataType="i4"
+                      name="artist_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output].ExternalColumns[role]"
+                      dataType="bool"
+                      name="role" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[track_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[track_fk]"
+                      name="track_fk" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[artist_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[artist_fk]"
+                      name="artist_fk" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[role]"
+                      dataType="bool"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[role]"
+                      name="role" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate Seasonal Score\Source Fact"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source Fact"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Group_ID_13].[FactSongStreams]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Calculate Seasonal Score\Source Fact.Connections[OleDbConnection]"
+                  connectionManagerID="{2CA94DEF-4A7E-42AF-B243-01E391F60C98}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_13_DB.Group_ID_13]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[date_song_fk]"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[date_song_fk]"
+                      name="date_song_fk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[track_fk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[track_fk]"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[track_fk]"
+                      name="track_fk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[streams_1month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[streams_1month]"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].Columns[streams_1month]"
+                      name="streams_1month"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[fact_pk]"
+                      dataType="i4"
+                      name="fact_pk" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[date_song_fk]"
+                      dataType="i4"
+                      name="date_song_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[track_fk]"
+                      dataType="i4"
+                      name="track_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[category_fk]"
+                      dataType="i4"
+                      name="category_fk" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[streams_1month]"
+                      dataType="i4"
+                      name="streams_1month" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output].ExternalColumns[popularity]"
+                      dataType="i4"
+                      name="popularity" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[date_song_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[date_song_fk]"
+                      name="date_song_fk" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[track_fk]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[track_fk]"
+                      name="track_fk" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[streams_1month]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[streams_1month]"
+                      name="streams_1month" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Aggregate Output 1]"
+              endId="Package\Calculate Seasonal Score\Sort.Inputs[Sort Input]"
+              name="Aggregate Output 1"
+              startId="Package\Calculate Seasonal Score\AggWinter.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Aggregate Output 11]"
+              endId="Package\Calculate Seasonal Score\Sort 1.Inputs[Sort Input]"
+              name="Aggregate Output 1"
+              startId="Package\Calculate Seasonal Score\AggSummer.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Case 1]"
+              endId="Package\Calculate Seasonal Score\Lookup_Date.Inputs[Lookup Input]"
+              name="Case 1"
+              startId="Package\Calculate Seasonal Score\Conditional Split_.Outputs[Case 1]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Derived Column Output]"
+              endId="Package\Calculate Seasonal Score\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Calculate Seasonal Score\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Lookup Match Output]"
+              endId="Package\Calculate Seasonal Score\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Calculate Seasonal Score\Lookup Geo.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Lookup Match Output1]"
+              endId="Package\Calculate Seasonal Score\Lookup Geo.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Calculate Seasonal Score\Lookup Artist.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Lookup Match Output2]"
+              endId="Package\Calculate Seasonal Score\Lookup Artist.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Calculate Seasonal Score\Lookup_Date.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Merge Join Output1]"
+              endId="Package\Calculate Seasonal Score\Derived Column.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Calculate Seasonal Score\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Merge Join Output]"
+              endId="Package\Calculate Seasonal Score\Conditional Split_.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Calculate Seasonal Score\Merge Join 1.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[OLE DB Source Output]"
+              endId="Package\Calculate Seasonal Score\Sort Track.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Calculate Seasonal Score\Source Fact.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[OLE DB Source Output1]"
+              endId="Package\Calculate Seasonal Score\Sort Track2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Calculate Seasonal Score\Source Bridge.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Sort Output]"
+              endId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Calculate Seasonal Score\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Sort Output1]"
+              endId="Package\Calculate Seasonal Score\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Calculate Seasonal Score\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Sort Output2]"
+              endId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Calculate Seasonal Score\Sort Track.Outputs[Sort Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[Sort Output3]"
+              endId="Package\Calculate Seasonal Score\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Calculate Seasonal Score\Sort Track2.Outputs[Sort Output]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[SummerRows]"
+              endId="Package\Calculate Seasonal Score\AggSummer.Inputs[Aggregate Input 1]"
+              name="SummerRows"
+              startId="Package\Calculate Seasonal Score\Conditional Split.Outputs[SummerRows]" />
+            <path
+              refId="Package\Calculate Seasonal Score.Paths[WinterRows]"
+              endId="Package\Calculate Seasonal Score\AggWinter.Inputs[Aggregate Input 1]"
+              name="WinterRows"
+              startId="Package\Calculate Seasonal Score\Conditional Split.Outputs[WinterRows]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\Calculate Seasonal Score"
+          TopLeft="269.785714848309,157.676470454847" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Calculate Seasonal Score">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Calculate Seasonal Score\Conditional Split_"
+          TopLeft="10.6365078682532,84.1787390726768" />
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\Calculate Seasonal Score\Sort Track2"
+          TopLeft="414.763492727794,27.8130720049808" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Calculate Seasonal Score\Sort 1"
+          TopLeft="266.622222759138,330.804574957321" />
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\Calculate Seasonal Score\AggWinter"
+          TopLeft="16.1698411341767,207.309803875541" />
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Calculate Seasonal Score\Lookup Geo"
+          TopLeft="676.912699782355,144.283660059295" />
+        <NodeLayout
+          Size="136,41.6"
+          Id="Package\Calculate Seasonal Score\AggSummer"
+          TopLeft="240.217460594871,249.035294061342" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Calculate Seasonal Score\Merge Join 1"
+          TopLeft="275.636508496231,80.0937717296998" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Calculate Seasonal Score\Derived Column"
+          TopLeft="383.709524200806,377.525490106035" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Calculate Seasonal Score\Conditional Split"
+          TopLeft="513.233334319648,218.264052205656" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Calculate Seasonal Score\Source Bridge"
+          TopLeft="584.376191477711,30.5490196056088" />
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\Calculate Seasonal Score\Lookup_Date"
+          TopLeft="145.795238378563,145.093771672724" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Calculate Seasonal Score\Sort"
+          TopLeft="25.7730156300696,280.309803864147" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Calculate Seasonal Score\Flat File Destination"
+          TopLeft="595.814286418289,374.13333327256" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Calculate Seasonal Score\Sort Track"
+          TopLeft="181.668254200219,26.8718955089213" />
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\Calculate Seasonal Score\Source Fact"
+          TopLeft="5.61428568387534,24.1215685968409" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Calculate Seasonal Score\Merge Join"
+          TopLeft="14.1857139542397,379.558169816521" />
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\Calculate Seasonal Score\Lookup Artist"
+          TopLeft="475.477778699048,143.610457471803" />
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Lookup Match Output1]"
+          TopLeft="615.477778699048,164.747058765549">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61.4349210833067,0"
+              Start="0,0"
+              End="53.9349210833067,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.9349210833067,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-21.2239261770967,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Lookup Match Output]"
+          TopLeft="744.112699782355,185.883660059295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-153.679365462707,32.380392146361"
+              Start="0,0"
+              End="-153.679365462707,24.880392146361">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.1901960731805" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.1901960731805"
+                    Point2="0,16.1901960731805"
+                    Point3="-4,16.1901960731805" />
+                  <mssgle:LineSegment
+                    End="-149.679365462707,16.1901960731805" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-149.679365462707,16.1901960731805"
+                    Point2="-153.679365462707,16.1901960731805"
+                    Point3="-153.679365462707,20.1901960731805" />
+                  <mssgle:LineSegment
+                    End="-153.679365462707,24.880392146361" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-125.031069450104,21.1901960731805,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Derived Column Output]"
+          TopLeft="536.509524200806,396.629411689297">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="59.304762217483,0"
+              Start="0,0"
+              End="51.804762217483,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="51.804762217483,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Case 1]"
+          TopLeft="170.636507868253,110.578739072677">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.1587305103098,34.5150326000477"
+              Start="0,0"
+              End="45.1587305103098,27.0150326000477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="41.1587305103098,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.1587305103098,0"
+                    Point2="45.1587305103098,0"
+                    Point3="45.1587305103098,4" />
+                  <mssgle:LineSegment
+                    End="45.1587305103098,27.0150326000477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.9406445728098,-15.5537109375,30.436171875,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Aggregate Output 11]"
+          TopLeft="319.178571846716,290.635294061342">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.1692808959788"
+              Start="0,0"
+              End="0,32.6692808959788">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6692808959788" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Aggregate Output 1]"
+          TopLeft="77.3714283821231,248.909803875541">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.399999988606"
+              Start="0,0"
+              End="0,23.899999988606">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.899999988606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[WinterRows]"
+          TopLeft="513.233334319648,230.786928040599">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-369.063493185471,0"
+              Start="0,0"
+              End="-361.563493185471,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-361.563493185471,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-207.929500498985,5,54.2955078125,9.470703125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[SummerRows]"
+          TopLeft="513.233334319648,244.664052205656">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-137.015873724777,25.1712418556857"
+              Start="0,0"
+              End="-129.515873724777,25.1712418556857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-53.8511466837946,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-53.8511466837946,0"
+                    Point2="-57.8511466837946,0"
+                    Point3="-57.8511466837946,4" />
+                  <mssgle:LineSegment
+                    End="-57.8511466837946,21.1712418556857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.8511466837946,21.1712418556857"
+                    Point2="-57.8511466837946,25.1712418556857"
+                    Point3="-61.8511466837946,25.1712418556857" />
+                  <mssgle:LineSegment
+                    End="-129.515873724777,25.1712418556857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-88.7343888712946,-15.5537109375,61.766484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Sort Output3]"
+          TopLeft="414.763492727794,48.6130720049808">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-48.1936508982299,31.4806997247191"
+              Start="0,0"
+              End="-48.1936508982299,23.9806997247191">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-44.1936508982299,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44.1936508982299,0"
+                    Point2="-48.1936508982299,0"
+                    Point3="-48.1936508982299,4" />
+                  <mssgle:LineSegment
+                    End="-48.1936508982299,23.9806997247191" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Sort Output2]"
+          TopLeft="308.068254200219,47.6718955089213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.0349209626784,32.4218762207785"
+              Start="0,0"
+              End="15.0349209626784,24.9218762207785">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="11.0349209626784,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.0349209626784,0"
+                    Point2="15.0349209626784,0"
+                    Point3="15.0349209626784,4" />
+                  <mssgle:LineSegment
+                    End="15.0349209626784,24.9218762207785" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Sort Output1]"
+          TopLeft="266.622222759138,351.604574957321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-122.836508804898,43.1535948591995"
+              Start="0,0"
+              End="-115.336508804898,43.1535948591995">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-66.9722050872744,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-66.9722050872744,0"
+                    Point2="-70.9722050872744,0"
+                    Point3="-70.9722050872744,4" />
+                  <mssgle:LineSegment
+                    End="-70.9722050872744,39.1535948591995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-70.9722050872744,39.1535948591995"
+                    Point2="-70.9722050872744,43.1535948591995"
+                    Point3="-74.9722050872744,43.1535948591995" />
+                  <mssgle:LineSegment
+                    End="-115.336508804898,43.1535948591995" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Sort Output]"
+          TopLeft="76.7793647921546,321.909803864147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.6483659523731"
+              Start="0,0"
+              End="0,50.1483659523731">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.1483659523731" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[OLE DB Source Output1]"
+          TopLeft="584.376191477711,49.9810458052948">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-36.8126987499174,0"
+              Start="0,0"
+              End="-29.3126987499174,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-29.3126987499174,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[OLE DB Source Output]"
+          TopLeft="139.214285683875,46.2967320528811">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.4539685163438,0"
+              Start="0,0"
+              End="34.9539685163438,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.9539685163438,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Merge Join Output1]"
+          TopLeft="143.78571395424,402.141829961278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="239.923810246567,0"
+              Start="0,0"
+              End="232.423810246567,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="232.423810246567,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Merge Join Output]"
+          TopLeft="275.636508496231,100.136255401188">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-105.000000627978,0"
+              Start="0,0"
+              End="-97.5000006279777,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-97.5000006279777,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate Seasonal Score.Paths[Lookup Match Output2]"
+          TopLeft="285.795238378563,165.152114572264">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="189.682540320485,0"
+              Start="0,0"
+              End="182.182540320485,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="182.182540320485,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="42.8998834414925,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Calculate Seasonal Score\Lookup Geo">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Group_ID_13].[DimGeography]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Calculate Seasonal Score\Source Bridge">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Calculate Seasonal Score\Lookup_Date">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Group_ID_13].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Calculate Seasonal Score\Source Fact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Calculate Seasonal Score\Lookup Artist">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Group_ID_13].[DimArtist]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
