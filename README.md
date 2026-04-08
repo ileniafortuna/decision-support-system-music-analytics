@@ -55,10 +55,5 @@ The objective is to transform raw data into structured insights to support busin
 
 ---
 
-## Repository Structure
-- `report/` → final project report
-
----
-
 ## Author
 Ilenia Fortuna
