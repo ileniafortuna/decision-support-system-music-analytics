@@ -1,0 +1,934 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="d1285aee-1eaf-4164-b131-54d966279605" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Group_ID_13_DSV</ID>
+  <Name>Group_ID_13_DSV</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="38" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-10934" scrolltop="-4085" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="79" x="16129" y="14393" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimCategory" left="-1285" top="11830" logicalid="19" controlid="1" masterid="0" hint1="0" hint2="0" width="3154" height="1588" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000520c000034060000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimCategory" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimDate" left="-10051" top="7267" logicalid="20" controlid="2" masterid="0" hint1="0" hint2="0" width="3000" height="4106" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b80b00000a100000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimDate" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FactSongStreams" left="-1923" top="7307" logicalid="21" controlid="3" masterid="0" hint1="0" hint2="0" width="3302" height="3027" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000e60c0000d30b0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_FactSongStreams" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimTrack" left="-4723" top="-1553" logicalid="22" controlid="4" masterid="0" hint1="0" hint2="0" width="3810" height="4826" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000e20e0000da120000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimTrack" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline.080.1" left="-1207" top="10034" logicalid="23" controlid="5" masterid="0" hint1="0" hint2="0" width="799" height="2296" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Fact_Category]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="3" sourceattachpoint="0" destattachpoint="3" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-808" y="11830" />
+              <point x="-808" y="11082" />
+              <point x="-822" y="11082" />
+              <point x="-822" y="10334" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline.080.1" left="-7351" top="7821" logicalid="24" controlid="6" masterid="0" hint1="0" hint2="0" width="5728" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Fact_Date]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="3" sourceattachpoint="13" destattachpoint="12" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-7051" y="8220" />
+              <point x="-4474" y="8220" />
+              <point x="-4474" y="8270" />
+              <point x="-1923" y="8270" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline.080.1" left="-2667" top="2774" logicalid="25" controlid="7" masterid="0" hint1="0" hint2="0" width="3245" height="4833" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Fact_Track]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="3" sourceattachpoint="9" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-2268" y="3273" />
+              <point x="-2268" y="5290" />
+              <point x="278" y="5290" />
+              <point x="278" y="7307" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimArtist" left="4373" top="9960" logicalid="26" controlid="8" masterid="0" hint1="0" hint2="0" width="3000" height="3671" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b80b0000570e0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimArtist" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimAudio" left="806" top="-1698" logicalid="27" controlid="9" masterid="0" hint1="0" hint2="0" width="3697" height="4019" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000710e0000b30f0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimAudio" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline.080.1" left="-1213" top="-1738" logicalid="28" controlid="10" masterid="0" hint1="0" hint2="0" width="2319" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Track_Audio]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="9" destid="4" sourceattachpoint="14" destattachpoint="15" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="806" y="-1339" />
+              <point x="-53" y="-1339" />
+              <point x="-53" y="-1340" />
+              <point x="-913" y="-1340" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimGeography" left="6622" top="2296" logicalid="29" controlid="11" masterid="0" hint1="0" hint2="0" width="3000" height="2625" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b80b0000410a0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimGeography" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline.080.1" left="6623" top="4422" logicalid="30" controlid="12" masterid="0" hint1="0" hint2="0" width="799" height="5838" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Artist_Geo]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="11" destid="8" sourceattachpoint="1" destattachpoint="8" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="7022" y="4921" />
+              <point x="7022" y="7440" />
+              <point x="6973" y="7440" />
+              <point x="6973" y="9960" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimLyrics" left="-10226" top="-1642" logicalid="31" controlid="13" masterid="0" hint1="0" hint2="0" width="4072" height="3323" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000e80f0000fb0c0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimLyrics" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline.080.1" left="-6454" top="-1480" logicalid="32" controlid="14" masterid="0" hint1="0" hint2="0" width="2031" height="3740" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Track_Lyrics]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="13" destid="4" sourceattachpoint="15" destattachpoint="26" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-6154" y="-1081" />
+              <point x="-5439" y="-1081" />
+              <point x="-5439" y="1960" />
+              <point x="-4723" y="1960" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="BridgeFeatured" left="4100" top="6324" logicalid="33" controlid="15" masterid="0" hint1="0" hint2="0" width="3000" height="1929" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b80b000089070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_BridgeFeatured" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline.080.1" left="4200" top="7953" logicalid="34" controlid="16" masterid="0" hint1="0" hint2="0" width="973" height="2507" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Bridge_Artist]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="8" destid="15" sourceattachpoint="0" destattachpoint="1" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="4773" y="9960" />
+              <point x="4773" y="9107" />
+              <point x="4500" y="9107" />
+              <point x="4500" y="8253" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline.080.1" left="-1213" top="2661" logicalid="35" controlid="17" masterid="0" hint1="0" hint2="0" width="5613" height="4377" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_Bridge_Track]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="15" sourceattachpoint="31" destattachpoint="10" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-913" y="3060" />
+              <point x="1593" y="3060" />
+              <point x="1593" y="6738" />
+              <point x="4100" y="6738" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="PseudoFact_WeightedStreams" left="106" top="2973" logicalid="36" controlid="18" masterid="0" hint1="0" hint2="0" width="3510" height="3323" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b60d0000fb0c0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="PseudoFact_WeightedStreams" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-10934</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-4085</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-10226</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-1698</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>79</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="e16b34e1-2dd2-4d6f-af1d-f9211a556e96">
+      <ID>DimDate</ID>
+      <Name>DimDate</Name>
+      <DimensionID>DimDate</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="2679ce96-bd5d-4746-8e24-7d23c81fa5c5">
+          <AttributeID>Date Song Pk</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="5f13b662-3ec4-41f1-81f6-88200b201eeb">
+          <AttributeID>Day</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="c58ff50e-dbc7-478a-9fba-c62f0c65b37b">
+          <AttributeID>Year</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="c555a69c-f549-440d-accc-8de5e818950e">
+          <AttributeID>Weekday</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="996d2f0f-2e15-4116-b317-1f855b090360">
+          <AttributeID>Season</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="431795a4-35b4-48d8-9780-fcd833ec1bfc">
+          <AttributeID>Month</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="757bf85e-48a7-4753-9372-d125e64d1d90">
+          <AttributeID>Month Name</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="b7655257-167a-4720-8f1b-c0a6013ea444">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+    <Dimension dwd:design-time-name="622fe681-9a85-4d7d-8829-c28c031402ad">
+      <ID>DimCategory</ID>
+      <Name>DimCategory</Name>
+      <DimensionID>DimCategory</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="5eeaa729-44a1-4fe2-9f43-8d8e2734a73e">
+          <AttributeID>Category Pk</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="81c7eab3-5b01-4b5f-b667-2ef9d76081dc">
+      <ID>DimTrack</ID>
+      <Name>DimTrack</Name>
+      <DimensionID>DimTrack</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="ebdf2b58-c254-4cb3-a302-18c72e605e60">
+          <AttributeID>Track Pk</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="91f71089-7305-4755-b781-2258010775ed">
+          <AttributeID>Duration Ms</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="6edf6d45-9245-48a5-a79b-feadcf114da3">
+          <AttributeID>Explicit</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="5d6ea445-8668-41bc-bab8-f7d791a483bb">
+          <AttributeID>Album Release Date</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="b040c62b-722c-4a0f-a583-2187c1045a7e">
+          <AttributeID>Track Number</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="0b7caf0d-dc07-4047-af8a-82b9feec9b83">
+          <AttributeID>Disc Number</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="e181feb7-b836-4e09-92a3-576650c3e604">
+          <AttributeID>Audio Fk</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9af14122-0baf-4edf-b107-dbafa99c0436">
+          <AttributeID>Lyrics Fk</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="ffac474d-ef3a-4edc-8a36-306183543d14">
+      <ID>DimArtist</ID>
+      <Name>DimArtist</Name>
+      <DimensionID>DimArtist</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="b9db1b9d-7e09-4483-a735-471bdfc70e13">
+          <AttributeID>Artist Pk</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="73828303-c44f-4807-8c66-c1f4fef4a191">
+          <AttributeID>Gender</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="a02e649f-d75b-4a02-a216-9ebf538e7a7b">
+          <AttributeID>Birth Date</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9723e70d-c2bb-4b70-abfb-3fd119bb8e21">
+          <AttributeID>Nationality</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="51dcd159-d3d3-48c9-9a5a-5ff5df035665">
+          <AttributeID>Geo Fk</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="34fa526a-c645-4850-9adf-b0559e8695bb">
+      <ID>DimAudio</ID>
+      <Name>DimAudio</Name>
+      <DimensionID>DimAudio</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="2655d0f7-d71a-48fb-9179-c1b687292670">
+          <AttributeID>Audio Pk</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="b70ff862-0000-467b-bdf7-36767e1ec0cd">
+          <AttributeID>Loudness</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="915203d6-effa-4b5b-bb89-27b68e5ff9e3">
+          <AttributeID>Flatness</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="3073c2b5-baef-46f9-8fc1-76b520c0864f">
+          <AttributeID>Rolloff</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="0dc90c8a-1a4a-4e37-8426-ef2d26545d47">
+          <AttributeID>Flux</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9f986010-31cb-4442-ad44-f30ed33d1b2a">
+          <AttributeID>Rms</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="38593dc0-8913-4926-b390-58f3afaef493">
+          <AttributeID>Spectral Complexity</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="18bc0f4d-a198-4f19-9380-443a56021168">
+          <AttributeID>Pitch</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="d5b70c94-7974-4197-a281-b98608b1fdc1">
+          <AttributeID>Bpm</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="83f1b516-0158-4fbc-9e72-3ac3aab8cbd1">
+      <ID>DimGeography</ID>
+      <Name>DimGeography</Name>
+      <DimensionID>DimGeography</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="7f2dd5d4-006a-4a86-a628-322bbdb912f9">
+          <AttributeID>Geo Pk</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="0c3f7003-72c4-42f3-971d-2cda6bc20334">
+          <AttributeID>Province</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="d390f3c0-b551-4f07-b1ba-8c1765d28d33">
+          <AttributeID>Region</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="a622ece8-3986-4fb7-a68c-b235e02d1897">
+          <AttributeID>Country</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="c91e2c41-0f0d-4dac-ba5e-8c79c6f788e2">
+          <AttributeID>Birth Place</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="9b59dbdb-8f6b-45e5-b62b-8bee9e3c4600">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+    <Dimension dwd:design-time-name="5bcf9762-5a51-48fe-8d17-91de3aa9a001">
+      <ID>DimLyrics</ID>
+      <Name>DimLyrics</Name>
+      <DimensionID>DimLyrics</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="a791dc10-46e5-4c17-b41b-32497850c247">
+          <AttributeID>Lyrics Pk</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="f65b9fb1-9b8a-43d7-9e68-c60040976667">
+          <AttributeID>n Sentences</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="29bba89e-8547-4edc-bd0b-d49ea0299a03">
+          <AttributeID>Avg Token Per Clause</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="35f05938-a8c6-4e85-b821-2c9d529de40e">
+          <AttributeID>Char Per Tok</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="f7feaf21-5353-4f14-958c-d328bf215bfe">
+          <AttributeID>Swear IT</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="7b403a7b-c9f9-4dba-b651-227f00740d3f">
+          <AttributeID>Swear EN</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="d5d64814-0477-479d-b058-6291af8dcbd9">
+          <AttributeID>n Tokens</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="8dd3b50f-b2c3-4f0b-903e-cb329caaf019">
+      <ID>Fact Song Streams</ID>
+      <Name>Fact Song Streams</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="ea6c320d-9ed4-4531-9396-651af20b9360">
+          <ID>Streams 1month</ID>
+          <Name>Streams 1month</Name>
+          <Source dwd:design-time-name="04acadba-db14-457d-a56c-508bb323ee05">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="e9737619-fa03-4529-80ce-ccf033a42f8a">
+              <TableID>Group_ID_13_FactSongStreams</TableID>
+              <ColumnID>streams_1month</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="6f735f44-3769-48b1-b546-a0ab984563d6">
+          <ID>Popularity</ID>
+          <Name>Popularity</Name>
+          <Source dwd:design-time-name="4fe353ae-4cf6-4ba2-9d33-494d96a37299">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="1cf989fa-2b6b-4a31-9f5a-40aa8e2a770f">
+              <TableID>Group_ID_13_FactSongStreams</TableID>
+              <ColumnID>popularity</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="1de7e93a-4b43-467c-ad34-934b8a70726d">
+          <ID>Fact Song Streams Count</ID>
+          <Name>Fact Song Streams Count</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="c1293fc9-eb75-46f1-84cb-2b24c272a3e6">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="86fae4b3-582d-42b9-93ab-6825f58bd374">
+              <TableID>Group_ID_13_FactSongStreams</TableID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="b3aa3230-c76f-4fdc-aa02-f46bbbdd0d55">
+          <CubeDimensionID>DimDate</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="1d1015ea-9623-4e16-8bdd-8a20058b976f">
+              <AttributeID>Date Song Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="dd045c20-fd13-4f34-98d6-3e364d244472">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="4465684f-648a-49bc-8244-0ffeb20dda6c">
+                    <TableID>Group_ID_13_FactSongStreams</TableID>
+                    <ColumnID>date_song_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="121a6f96-e2ae-40a6-a842-430f0897467d">
+          <CubeDimensionID>DimCategory</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="c23be3e6-c607-4e10-bf84-93638a213cab">
+              <AttributeID>Category Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="1cc59bb9-daf1-4542-a08d-ab6c519f6664">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="e45bdf7e-e4b6-448d-a47f-f729159753a5">
+                    <TableID>Group_ID_13_FactSongStreams</TableID>
+                    <ColumnID>category_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="ReferenceMeasureGroupDimension" dwd:design-time-name="953be140-130a-4f80-9113-46da2725cd0d">
+          <CubeDimensionID>DimAudio</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="88b4f13a-0f64-4008-9f6f-d5a99454b5e3">
+              <AttributeID>Audio Pk</AttributeID>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+          <IntermediateCubeDimensionID>DimTrack</IntermediateCubeDimensionID>
+          <IntermediateGranularityAttributeID>Track Pk</IntermediateGranularityAttributeID>
+          <Materialization>Regular</Materialization>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+        </Dimension>
+        <Dimension xsi:type="ReferenceMeasureGroupDimension" dwd:design-time-name="19300cc0-36a0-4d15-be35-c43ea43ecce2">
+          <CubeDimensionID>DimLyrics</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="bff0ef37-fa2b-41a7-8a8e-4c031495f883">
+              <AttributeID>Lyrics Pk</AttributeID>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+          <IntermediateCubeDimensionID>DimTrack</IntermediateCubeDimensionID>
+          <IntermediateGranularityAttributeID>Track Pk</IntermediateGranularityAttributeID>
+          <Materialization>Regular</Materialization>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+        </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="a5b815fc-c56a-461a-b688-8175a09d9558">
+          <CubeDimensionID>DimGeography</CubeDimensionID>
+          <MeasureGroupID>Bridge Featured</MeasureGroupID>
+        </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="86f66ea4-fe17-41ec-9349-b817f9bf42c0">
+          <CubeDimensionID>DimArtist</CubeDimensionID>
+          <MeasureGroupID>Bridge Featured</MeasureGroupID>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="60ed4183-8fd3-4f3d-94c8-ed93cdeb647d">
+          <CubeDimensionID>DimTrack</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="65005084-67db-46d1-911b-539c93fbad60">
+              <AttributeID>Track Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="42a62ee3-cbe8-42a9-be43-e32fbdd2dedb">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="44029f44-23f5-4331-ae48-3558604496bf">
+                    <TableID>Group_ID_13_FactSongStreams</TableID>
+                    <ColumnID>track_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+    <MeasureGroup dwd:design-time-name="a002e9e0-d665-4f48-a878-8f47742ef13f">
+      <ID>Bridge Featured</ID>
+      <Name>Bridge Featured</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="ca1c27c0-275b-40ed-ad6a-5261ff81f428">
+          <ID>Bridge Featured Count</ID>
+          <Name>Bridge Featured Count</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="d0f0dcc1-ff26-48c1-b2ca-a0fc45996cea">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="508041c8-cee0-432e-95c1-683ce2aca02b">
+              <TableID>Group_ID_13_BridgeFeatured</TableID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="ReferenceMeasureGroupDimension" dwd:design-time-name="98162db6-79ba-4eda-9adc-91ff4ba4dff8">
+          <CubeDimensionID>DimGeography</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="202b0abf-21b6-4f6a-bb8e-407fc3040217">
+              <AttributeID>Geo Pk</AttributeID>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+          <IntermediateCubeDimensionID>DimArtist</IntermediateCubeDimensionID>
+          <IntermediateGranularityAttributeID>Geo Fk</IntermediateGranularityAttributeID>
+          <Materialization>Regular</Materialization>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="b61bc38f-03ab-4fa5-a0d9-72488fc792a7">
+          <CubeDimensionID>DimArtist</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="e08829a4-c8bb-4122-bd6e-94ed4d5f757d">
+              <AttributeID>Artist Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="0c4c07e6-7bbf-42b9-b114-dce0ca3864ea">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="3a7e973e-8e44-4d9e-ac9f-c60593602637">
+                    <TableID>Group_ID_13_BridgeFeatured</TableID>
+                    <ColumnID>artist_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="a40c7519-59d5-44ef-9cec-18394bc631ad">
+          <CubeDimensionID>DimTrack</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="cb9cf9be-79ff-47c9-bfea-07c713b9c5e9">
+              <AttributeID>Track Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="b3acc732-a489-472a-aec9-e4a80b0d7bda">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="44994e35-98dd-4880-8e84-e141035715f3">
+                    <TableID>Group_ID_13_BridgeFeatured</TableID>
+                    <ColumnID>track_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+    <MeasureGroup dwd:design-time-name="ff72ff13-6d9a-41c3-9ba0-858b9ee2d530">
+      <ID>Pseudo Fact Weighted Streams</ID>
+      <Name>Pseudo Fact Weighted Streams</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="83f54a5c-ae79-4545-9e70-b252538dbbc0">
+          <ID>Fact Pk</ID>
+          <Name>Fact Pk</Name>
+          <Source dwd:design-time-name="23f7a2ee-d249-47dc-9e61-d6dd0b19eeeb">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="5ba83d81-359f-4ccc-82d2-ce656a240f29">
+              <TableID>PseudoFact_WeightedStreams</TableID>
+              <ColumnID>fact_pk</ColumnID>
+            </Source>
+          </Source>
+          <Visible>false</Visible>
+        </Measure>
+        <Measure dwd:design-time-name="ce671ce9-85d7-4aa9-87d3-9f398a3ccb77">
+          <ID>Date Song Fk</ID>
+          <Name>Date Song Fk</Name>
+          <Source dwd:design-time-name="fbd44a84-127c-47c8-89bd-14f9b9f76e76">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="86c7e50c-112e-428c-9e6d-3cbe54681e89">
+              <TableID>PseudoFact_WeightedStreams</TableID>
+              <ColumnID>date_song_fk</ColumnID>
+            </Source>
+          </Source>
+          <Visible>false</Visible>
+        </Measure>
+        <Measure dwd:design-time-name="fccba226-f5c5-447c-9504-2b61dd1782ab">
+          <ID>Track Fk</ID>
+          <Name>Track Fk</Name>
+          <Source dwd:design-time-name="7a3b26c9-ca02-4f0d-994b-812978607622">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="3b832a8d-ef56-4cd3-aadb-090d5c4e10cc">
+              <TableID>PseudoFact_WeightedStreams</TableID>
+              <ColumnID>track_fk</ColumnID>
+            </Source>
+          </Source>
+          <Visible>false</Visible>
+        </Measure>
+        <Measure dwd:design-time-name="58b3f8d7-6751-4bb3-9483-5460458d1179">
+          <ID>Category Fk</ID>
+          <Name>Category Fk</Name>
+          <Source dwd:design-time-name="373efdfa-4880-49f1-ad02-251666af9278">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="7ca4a6ee-4830-47f7-afd0-1be3bc85db74">
+              <TableID>PseudoFact_WeightedStreams</TableID>
+              <ColumnID>category_fk</ColumnID>
+            </Source>
+          </Source>
+          <Visible>false</Visible>
+        </Measure>
+        <Measure dwd:design-time-name="821acb62-e8eb-4e77-b3b9-0cf308ac4243">
+          <ID>Artist Fk</ID>
+          <Name>Artist Fk</Name>
+          <Source dwd:design-time-name="c74debf9-b5ee-4911-93c5-9b3d938c0f8a">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="49feb989-861b-45be-88d2-c34344ca8453">
+              <TableID>PseudoFact_WeightedStreams</TableID>
+              <ColumnID>artist_fk</ColumnID>
+            </Source>
+          </Source>
+          <Visible>false</Visible>
+        </Measure>
+        <Measure dwd:design-time-name="4dac96a8-81d6-45d9-a4de-c0c58cabc842">
+          <ID>Streams 1month - Pseudo Fact Weighted Streams</ID>
+          <Name>Streams 1month - Pseudo Fact Weighted Streams</Name>
+          <Source dwd:design-time-name="21ccec4a-bb97-409d-a95c-a016b807c797">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="c8439e2f-05e3-4a31-8843-14408d9355af">
+              <TableID>PseudoFact_WeightedStreams</TableID>
+              <ColumnID>streams_1month</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="6ea27179-0f90-4c3c-9445-00d6f7f13b04">
+          <ID>Weighted Streams</ID>
+          <Name>Weighted Streams</Name>
+          <Source dwd:design-time-name="830e79a2-e2e1-42cf-8a3f-d13224e50233">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="eb9d02e1-ee21-451e-8e2f-9a15b1a81ee3">
+              <TableID>PseudoFact_WeightedStreams</TableID>
+              <ColumnID>weighted_streams</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="e877fd52-c229-470d-b56a-74ca1257eb49">
+          <ID>Conteggio di Pseudo Fact Weighted Streams</ID>
+          <Name>Conteggio di Pseudo Fact Weighted Streams</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="2a9b9260-1b59-4fa6-ac43-ad5c3abb93f9">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="d9a21d06-2ade-4f84-bd67-1159c78dcdbf">
+              <TableID>PseudoFact_WeightedStreams</TableID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="439307e1-0e90-4396-adb1-b9b6eb5bfe89">
+          <CubeDimensionID>DimDate</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="593811f6-3440-4c2c-8de6-14a5a5c11dfb">
+              <AttributeID>Date Song Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="7a5178ae-3af2-4e01-a29e-b9c3c155c92b">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="79716b0e-9368-4afe-a457-eca8421ec849">
+                    <TableID>PseudoFact_WeightedStreams</TableID>
+                    <ColumnID>date_song_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="058925e0-48df-49e0-b0b7-1a0cb3313e30">
+          <CubeDimensionID>DimTrack</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="e70652c8-952a-46e9-89a3-2167df884d3e">
+              <AttributeID>Track Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="ebf25a48-8680-45cd-86e2-048c9714c346">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ed931e92-bf62-4381-9050-784f181b1ab9">
+                    <TableID>PseudoFact_WeightedStreams</TableID>
+                    <ColumnID>track_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="43741f19-026f-4fc2-b6a8-5465f732de94">
+          <CubeDimensionID>DimCategory</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="3f473433-59b7-41fa-835f-403f73a3edf4">
+              <AttributeID>Category Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="c59c1e2f-5c4f-49dd-8800-2933d9aa3868">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="1582b84b-b05d-401c-bf53-8e66ffbb2f4f">
+                    <TableID>PseudoFact_WeightedStreams</TableID>
+                    <ColumnID>category_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="35942f6a-9002-4b86-a7f0-d0912df997b5">
+          <CubeDimensionID>DimArtist</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="d424d538-ba0d-4d68-85d8-ceb5ed2c5781">
+              <AttributeID>Artist Pk</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="285e8038-1f4a-4aae-9eb1-6cf3421d13ad">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ea3c9452-d3b9-4492-869e-dfcf7927724d">
+                    <TableID>PseudoFact_WeightedStreams</TableID>
+                    <ColumnID>artist_fk</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="65230741-a1c1-43de-86ba-c19d90aec1c8">
+    <DataSourceViewID>Group_ID_13_DSV</DataSourceViewID>
+  </Source>
+  <MdxScripts>
+    <MdxScript dwd:design-time-name="880f94d7-cafd-45e4-8816-a6257a43a4d4">
+      <ID>MdxScript</ID>
+      <Name>MdxScript</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Commands>
+        <Command>
+          <Text>/*
+Il comando CALCULATE controlla l'aggregazione delle celle foglia nel cubo.
+L'eliminazione o la modifica del comando CALCULATE influisce sui dati nel cubo.
+È consigliabile modificare il comando solo se si specifica manualmente la modalità di aggregazione del cubo.
+*/
+CALCULATE; </Text>
+        </Command>
+      </Commands>
+    </MdxScript>
+  </MdxScripts>
+</Cube>

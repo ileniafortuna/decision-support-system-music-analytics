@@ -1,0 +1,65 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="d1c0b3d8-699d-46e6-8a6e-8106bfe0bdbe" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Group_ID_13_DSV</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>Fact Song Streams</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="b709ae85-30df-40c8-a33d-17354d0553bf">
+          <ID>Fact Song Streams</ID>
+          <Name>Fact Song Streams</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="19476fc7-7bed-4756-af7d-718118dbf0a3">
+            <DataSourceViewID>Group_ID_13_DSV</DataSourceViewID>
+            <TableID>Group_ID_13_FactSongStreams</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Bridge Featured</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="acc8e9dc-8bbb-4ae5-bc9d-95cdbea1b760">
+          <ID>Bridge Featured</ID>
+          <Name>Bridge Featured</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="eea9be75-640d-4344-94ef-afbeb663622d">
+            <DataSourceViewID>Group_ID_13_DSV</DataSourceViewID>
+            <TableID>Group_ID_13_BridgeFeatured</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Pseudo Fact Weighted Streams</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="193b5ca3-f18b-4aa2-96b5-5eaf46b9e4a2">
+          <ID>Pseudo Fact Weighted Streams</ID>
+          <Name>Pseudo Fact Weighted Streams</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="d0bf736b-fc85-4545-a4c8-22c2dc5a0960">
+            <DataSourceViewID>Group_ID_13_DSV</DataSourceViewID>
+            <TableID>PseudoFact_WeightedStreams</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

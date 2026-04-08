@@ -1,0 +1,28 @@
+-- 16. Compute the average yearly artist streams: for each artist, calculate the total streams of all their songs.
+--If the artist is the main artist, weight the streams by 0.8; otherwise by 0.2. 
+--Then, compute the sum of these values and divide it by the grand total of streams in the same year.
+
+with member GrandTotalStreams_Year as
+(
+  [DimArtist].[Artist].[All],
+  [Measures].[Streams 1month]
+)
+
+member WeightedArtistStreams_Year as
+(
+  [DimArtist].[Artist].[All],
+  [Measures].[Weighted Streams]
+)
+
+member AvgYearlyArtistStreams as
+  WeightedArtistStreams_Year/ GrandTotalStreams_Year
+
+select
+{ WeightedArtistStreams_Year, GrandTotalStreams_Year, AvgYearlyArtistStreams } on columns,
+
+filter(
+  [DimDate].[Year].[Year],
+  [DimDate].[Year].currentMember.name <> "0"
+) ON ROWS
+
+from [Group_ID_13_DSV]

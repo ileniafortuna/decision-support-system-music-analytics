@@ -1,0 +1,240 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="2097c0e6-d158-40a4-aa7f-338eac5133b4" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DimLyrics</ID>
+  <Name>DimLyrics</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1250" scrolltop="-5112" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="6668" y="13610" backcolor="2039583" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimLyrics" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="4128" height="3387" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000201000003b0d0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimLyrics" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1250</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-5112</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="93f6a33e-431c-429f-9a46-02cb25c8e708">
+    <DataSourceViewID>Group_ID_13_DSV</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration dwd:design-time-name="0fe25356-56a9-45d2-82f6-edfc57aae6c6">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="d1c314c4-80ea-4f87-852c-f73365e46fc1">
+      <ID>Lyrics Pk</ID>
+      <Name>Lyrics</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ea8586bc-eaef-4a62-b913-08b206f15a5f">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0329d448-fa38-4af8-a7b2-a53fdaa7c623">
+            <TableID>Group_ID_13_DimLyrics</TableID>
+            <ColumnID>lyrics_pk</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="8f66eb27-1553-43ea-962e-41117cd925a8">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="b51742c1-26af-4f2a-949d-7a6b03fe336c">
+          <TableID>Group_ID_13_DimLyrics</TableID>
+          <ColumnID>n_tokens</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="9f4ac592-a8c9-478b-b3af-160f973d54af">
+          <AttributeID>n Sentences</AttributeID>
+          <Name>n Sentences</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="89b42127-2dc9-4f34-b4e9-b83a58a0f008">
+          <AttributeID>Avg Token Per Clause</AttributeID>
+          <Name>Avg Token Per Clause</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a03127e5-724d-4f3b-bdd1-31bef1977d9c">
+          <AttributeID>Char Per Tok</AttributeID>
+          <Name>Char Per Tok</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f64cb940-9ec5-47ba-b314-4501efd69970">
+          <AttributeID>Swear IT</AttributeID>
+          <Name>Swear IT</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7f96be5d-5bdc-42ab-852e-56055b3635f1">
+          <AttributeID>Swear EN</AttributeID>
+          <Name>Swear EN</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c10f1cdd-1a5c-44e2-9109-9d273814dae9">
+          <AttributeID>n Tokens</AttributeID>
+          <Name>n Tokens</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="56319a5b-9f3e-4d47-bcfb-f62d6afb1706">
+      <ID>n Sentences</ID>
+      <Name>n Sentences</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="03410e4b-65e5-4981-907a-6da9f6120c33">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8353cdab-fafd-4a8a-bc64-9f4daf21b30c">
+            <TableID>Group_ID_13_DimLyrics</TableID>
+            <ColumnID>n_sentences</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="519347ce-c665-4ef2-b23e-736829914adc">
+      <ID>Avg Token Per Clause</ID>
+      <Name>Avg Token Per Clause</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d4bd902d-eb39-490c-9102-d288adecadf9">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9f29fa10-e457-4d1c-aa48-c1a4ad9ba8ad">
+            <TableID>Group_ID_13_DimLyrics</TableID>
+            <ColumnID>avg_token_per_clause</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3b2da85d-5159-4330-a318-4c4d97924f5f">
+      <ID>Char Per Tok</ID>
+      <Name>Char Per Tok</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0cd6dfb3-ebe5-4638-8924-b8092ee97fa9">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5fa32bd7-6a1e-4e89-a54f-62bf6b084fe3">
+            <TableID>Group_ID_13_DimLyrics</TableID>
+            <ColumnID>char_per_tok</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2501f1da-db0e-4ca9-9f38-854ebb0bf556">
+      <ID>Swear IT</ID>
+      <Name>Swear IT</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c0089612-8907-40f0-b14d-c8327def77e8">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4f01fead-28c2-4394-b820-e6c7b2c38545">
+            <TableID>Group_ID_13_DimLyrics</TableID>
+            <ColumnID>swear_IT</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>3</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d4408af0-4710-45c2-af6c-fc375d90a372">
+      <ID>Swear EN</ID>
+      <Name>Swear EN</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9ebc38c9-8ede-4621-9421-959df50d45a1">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="69b15644-859c-476a-8877-150101e5ed63">
+            <TableID>Group_ID_13_DimLyrics</TableID>
+            <ColumnID>swear_EN</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>3</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4f88b5d2-8db8-4161-b00c-3a90fedb3974">
+      <ID>n Tokens</ID>
+      <Name>n Tokens</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f53265a8-5cd3-41a8-b669-6e0bd2feac50">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="762534d6-82d5-4858-834d-7ca100e2021b">
+            <TableID>Group_ID_13_DimLyrics</TableID>
+            <ColumnID>n_tokens</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

@@ -1,0 +1,22 @@
+-- 15. For each month, show the total streams for each region and the overall total for the country.
+with member totCountry AS
+  sum(
+    descendants(
+      ancestor(
+        [DimGeography].[Geography].currentMember,
+        [DimGeography].[Geography].[Country]
+      ),
+      [DimGeography].[Geography].[Region]
+    ),
+    [Measures].[Streams 1month])
+ 
+select {[Measures].[Streams 1month], totCountry} on columns,
+nonempty(( 
+			[DimDate].[Year].[Year],
+			[DimDate].[Calendar].[Month],
+			[DimGeography].[Country].[Country],
+			[DimGeography].[Geography].[Region]),
+			
+			[Measures].[Streams 1month])on rows
+
+from [Group_ID_13_DSV]

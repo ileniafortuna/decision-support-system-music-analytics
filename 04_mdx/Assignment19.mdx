@@ -1,0 +1,33 @@
+-- 19. Propose and solve a query that reveals interesting non-trivial insights.
+-- Top 10 combinazioni Anno–Categoria in cui aumenta di più la percentuale di Weighted Streams 
+rispetto all’anno precedente
+with member yeartotal as
+( [dimcategory].[category].[all], [measures].[weighted streams] )
+
+member share as
+  [measures].[weighted streams] / yeartotal,
+  format_string = "percent"
+
+member prevyearshare as
+( [dimdate].[year].currentmember.prevmember,
+  share ),
+format_string = "percent"
+
+member sharedelta as
+[share] - prevyearshare,
+  format_string = "percent"
+
+set cand as
+filter(
+	nonempty( 
+		(filter ([DimDate].[Year].[Year], [DimDate].[Year].CurrentMember.name <> "0" ),
+        [DimCategory].[Category].[Category]
+		),
+      [Measures].[ShareDelta]),
+    [Measures].[ShareDelta] > 0 )
+select
+{ [measures].[weighted streams], share, prevyearshare, sharedelta } on columns,
+
+topcount( cand, 10, sharedelta) on rows
+
+from [group_id_13_dsv]

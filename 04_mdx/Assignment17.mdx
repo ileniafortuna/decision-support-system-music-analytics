@@ -1,0 +1,13 @@
+-- 17. For each song category, compute percentage increase/decrease in streams compared to previous year.
+with member Streams_prevYear as 
+iif(
+  [DimDate].[Year].CurrentMember.PrevMember.Name = "0",
+  NULL, ([DimDate].[Year].currentMember.PrevMember, [Measures].[Streams 1month]))
+
+member percChange as 
+iif (isempty(Streams_prevYear), "no info", (([Measures].[Streams 1month] - Streams_prevYear) / Streams_prevYear)), 
+format_string = "percent"
+
+select {[Measures].[Streams 1month], Streams_prevYear, percChange} on columns,
+nonempty(([DimDate].[Year].[Year],[DimCategory].[Category].[Category])) on rows
+from [Group_ID_13_DSV]

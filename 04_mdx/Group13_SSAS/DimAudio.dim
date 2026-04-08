@@ -1,0 +1,284 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="bd15f8d0-9f94-480b-94e9-7708bd869ae7" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DimAudio</ID>
+  <Name>DimAudio</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1473" scrolltop="-4752" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="6668" y="13610" backcolor="2039583" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimAudio" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3683" height="4106" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000630e00000a100000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="Group_ID_13_DimAudio" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1473</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-4752</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="cc7f1288-794a-4f60-be25-c121e61e9c6a">
+    <DataSourceViewID>Group_ID_13_DSV</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration dwd:design-time-name="387a6ce8-c26e-40d7-8c08-8775a8171d50">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="2c78ff50-a0e1-46db-bc9e-97a6eb26178f">
+      <ID>Audio Pk</ID>
+      <Name>Audio</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="83d15a85-76c6-465b-8fe2-d505db658a4a">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9f05e290-8f8c-45a4-9be4-e741783e011d">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>audio_pk</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6696cb71-b657-4522-87f8-2b5b4e1ef73d">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="4a15413e-27f2-4a76-bdd9-491fd2389abe">
+          <TableID>Group_ID_13_DimAudio</TableID>
+          <ColumnID>bpm</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="af3494fb-2a14-4aa3-b331-abc2468def17">
+          <AttributeID>Loudness</AttributeID>
+          <Name>Loudness</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="496ced07-fa18-4b82-be2c-306b54dec907">
+          <AttributeID>Flatness</AttributeID>
+          <Name>Flatness</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="77a7eba4-6323-45d2-8760-bac691dc9dbf">
+          <AttributeID>Rolloff</AttributeID>
+          <Name>Rolloff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="49692ea8-bf3f-4496-83ec-a98bb4253218">
+          <AttributeID>Flux</AttributeID>
+          <Name>Flux</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4bd86d09-5d86-4538-8a39-73403eda2d00">
+          <AttributeID>Rms</AttributeID>
+          <Name>Rms</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="94e36a59-da32-4f52-8301-63ca5ef291e9">
+          <AttributeID>Spectral Complexity</AttributeID>
+          <Name>Spectral Complexity</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bb884514-491b-453d-8c5f-019910468cb2">
+          <AttributeID>Pitch</AttributeID>
+          <Name>Pitch</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="039be1bc-3727-4cf2-8144-ad6a6f8e074d">
+          <AttributeID>Bpm</AttributeID>
+          <Name>Bpm</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3647b759-86df-4d51-b708-543ece70e184">
+      <ID>Loudness</ID>
+      <Name>Loudness</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8f74c5a9-d98a-407f-bff6-54200ed72cc3">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="73f473af-4ec3-4459-b2a7-d8e8e57bbb7b">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>loudness</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="59f6b0db-00b4-4900-9d29-898012fb6b80">
+      <ID>Flatness</ID>
+      <Name>Flatness</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0adeb6f4-7416-4943-bab2-174211b434ad">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fe7b3004-a59a-4b42-8fff-56f99c7d8a57">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>flatness</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e6bebd97-b669-4a85-b3c5-de9835356219">
+      <ID>Rolloff</ID>
+      <Name>Rolloff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="31dacdd2-e226-4e68-be21-6cd4a8af6e5a">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="72de82c3-4811-43a1-8487-f4b233e3c7ca">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>rolloff</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="76ba6688-1fa7-4d88-a8a9-3f47d0d98654">
+      <ID>Flux</ID>
+      <Name>Flux</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f6e7e466-6426-4f5e-8a11-0fc26a063b1c">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8863029c-39db-4096-b643-526ee736162a">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>flux</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="291ced42-3d48-4d41-9488-0192e82eb61d">
+      <ID>Rms</ID>
+      <Name>Rms</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="58d8cab3-ddd6-40be-a821-2ca022eced25">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="65efec65-db05-4133-bf18-35df35057d00">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>rms</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e09bf596-81ee-457a-84cd-80477f6a4d58">
+      <ID>Spectral Complexity</ID>
+      <Name>Spectral Complexity</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a274dd7f-9471-4948-9b61-a8474bbb1252">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="663a0b30-7b3f-4163-bbf4-3b71569509bd">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>spectral_complexity</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3cfa83f0-03a5-4f19-802a-023ed04e2f44">
+      <ID>Pitch</ID>
+      <Name>Pitch</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="43306f1d-9c39-4380-a8a6-c86ea70eccb2">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8ed6613e-d327-468f-9065-29c3462f7f14">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>pitch</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9babf8e3-6dc3-49aa-aedb-2fcc7ca51c38">
+      <ID>Bpm</ID>
+      <Name>Bpm</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="25ebebfc-81cc-42f0-86a2-2c268810f461">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a3f75112-78b3-4102-9bd7-32f4d8fe50a8">
+            <TableID>Group_ID_13_DimAudio</TableID>
+            <ColumnID>bpm</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DiscretizationMethod>Automatic</DiscretizationMethod>
+      <DiscretizationBucketCount>5</DiscretizationBucketCount>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

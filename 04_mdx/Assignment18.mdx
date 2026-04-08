@@ -1,0 +1,32 @@
+--18. For each season, list the categories where streams exceed the average of the previous year, and show the % increase.
+with member PrevYearSeasonAvg as
+  avg(
+    nonempty(
+      [DimCategory].[Category].[Category],
+      (
+        [DimDate].[Year].currentMember.PrevMember,
+        [DimDate].[Season].currentMember,
+        [Measures].[Streams 1month]
+      )
+    ),
+    (
+      [DimDate].[Year].currentMember.PrevMember,
+      [DimDate].[Season].currentMember,
+      [Measures].[Streams 1month]
+    )
+  )
+member PercIncrease as
+  ([Measures].[Streams 1month] - PrevYearSeasonAvg)/ PrevYearSeasonAvg,
+  format_string = "Percent"
+
+select {[Measures].[Streams 1month], PrevYearSeasonAvg, PercIncrease } on columns,
+nonempty( filter( 
+		( [DimDate].[Year].[Year],
+		  [DimDate].[Season].[Season],
+		  [DimCategory].[Category].[Category] 
+		),
+      [Measures].[Streams 1month] > PrevYearSeasonAvg
+  and PrevYearSeasonAvg > 0 
+  )
+) on rows
+from [Group_ID_13_DSV]
